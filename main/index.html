@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Example Student Schedule</title>
+
+<style>
+
+body {
+  margin: 100px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+/* Blurred Background Layer */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("grc.jpg") no-repeat center center/cover;
+  filter: blur(5px);        /* Adjust blur strength here */
+  z-index: -1;
+}
+
+h1{
+  text-align: center;
+  background: #e5c7c7;
+  font-size: 50px;
+  max-width: 1160px;
+  margin: 60px auto;
+  padding: 30px 20px;
+  border: 6px solid #333;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.wrapper{
+  max-width:1200px;
+  margin: auto;
+  border:3px solid #333;
+  background:white;
+  margin-top: 100px;
+}
+
+.schedule{
+  display:grid;
+  grid-template-columns:180px repeat(5, 1fr);
+  grid-template-rows:
+    70px   /* header */
+    330px  /* 8:20 */
+    80px   /* 9:00 */
+    90px   /* 10:00 */
+    90px   /* 11:00 */
+    90px   /* 12:00 */
+    90px   /* 11:00 */
+    90px   /* 1:00 */
+    90px;  /* 2:00 */
+}
+
+.cell{
+  border:1.5px solid #333;
+  padding:10px;
+  display:flex;
+  font-size:15px;
+}
+
+.header{
+  background:#cfcfcf;
+  font-weight:bold;
+}
+
+.time{
+  background:#efefef;
+  font-weight:bold;
+  justify-content:center; 
+  align-items:center; 
+  text-align:center;
+}
+
+/* Remove default list styling */
+ul {
+  list-style: none;
+  padding-left: 0; /* Adjust padding as needed */
+}
+
+/* Style the list item */
+.star-item {
+  position: relative; /* Needed for absolute positioning of the star */
+  padding-left: 1.2em; /* Creates space for the star */
+}
+
+/* Add the star symbol using the ::before pseudo-element */
+.star-item::before {
+  content: "★"; /* Unicode black star */
+  position: absolute;
+  left: 0; /* Position the star at the start of the padding */
+  color: rgb(0, 0, 0); /* Change the star's color */
+  font-size: 0.8em; /* Adjust star size */
+  line-height: 1.2em; /* Align vertically with text */
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+
+/* COLORS */
+.morning{ color: rgb(0, 90, 90); background:#d7e4ea; display: flex; align-items:flex-start;  padding-left: 20px; text-align:left;}
+.green{ background:#cfe6c8; justify-content:center; align-items:center; text-align:center;}
+.peach{ background:#e7b8a9; justify-content:center; align-items:center; text-align:center;}
+.lavender{ background:#d6c7e7; justify-content:center; align-items:center; text-align:center;}
+.blue{ background:#b9cbe6; justify-content:center; align-items:center; text-align:center;}
+.yellow{ background:#f2e2b8; justify-content:center; align-items:center; text-align:center;}
+.purple{ background:#d7c6db; justify-content:center; align-items:center; text-align:center;}
+.pink{ background:#e6c7d4; justify-content:center; align-items:center; text-align:center;}
+
+/* Responsive */
+@media(max-width:1000px){
+  .schedule{
+    grid-template-columns:1fr;
+    grid-template-rows:auto;
+  }
+  .header{display:none;}
+  .time{font-weight:bold;}
+}
+
+/* Print */
+@media print{
+  body{background:white;}
+}
+
+</style>
+</head>
+<body>
+
+<h1>EXAMPLE STUDENT SCHEDULE</h1>
+
+<div class="wrapper">
+<div class="schedule">
+
+<!-- HEADER -->
+<div class="cell header" style="grid-column:1; grid-row:1;"></div>
+<div class="cell header" style="grid-column:2; grid-row:1;">MON</div>
+<div class="cell header" style="grid-column:3; grid-row:1;">TUES</div>
+<div class="cell header" style="grid-column:4; grid-row:1;">WED</div>
+<div class="cell header" style="grid-column:5; grid-row:1;">THURS</div>
+<div class="cell header" style="grid-column:6; grid-row:1;">FRI</div>
+
+<!-- 8:20 -->
+<div class="cell time" style="grid-column:1; grid-row:2;">
+  8:20 - 9:00
+</div>
+
+<div class="cell morning" style="grid-column:2 / 7; grid-row:2;">
+  <ul>
+    <h3 class="pointer"><b><u>MORNING Meeting</u></b></h3>
+    <p>→ get laptop & work independently when you arrive!</p>
+    <li class="star-item" class="pointer"><b><u>GOAL TRACKER</u></b></li>
+    <p>→ look at then type goal in next link</p>
+    <li class="star-item"><b><u>DAILY GOAL</u></b></li>
+    <li class="star-item"><b><u>AM CHECK-IN</u></b></li>
+    <li class="star-item">CHECK CALENDAR & EMAIL</li>
+    <li class="star-item"><b><u>DO NOW</u></b></li>
+    <p>→ click on the folder that matches today's day of the week!</p>
+  </ul>
+</div>
+
+<!-- 9:00 -->
+<div class="cell time" style="grid-column:1; grid-row:3;">9:00 - 9:30</div>
+<div class="cell purple" style="grid-column:2; grid-row:3;">Social Group</div>
+<div class="cell purple" style="grid-column:3; grid-row:3;">Grocery Prep</div>
+<div class="cell lavender" style="grid-column:4; grid-row:3;">Vocational Class</div>
+<div class="cell purple" style="grid-column:5; grid-row:3;">Current Event</div>
+<div class="cell purple" style="grid-column:6; grid-row:3;">Social Group</div>
+
+<!-- 10:00 -->
+<div class="cell time" style="grid-column:1; grid-row:4;">10:00 - 11:00</div>
+
+<div class="cell green" style="grid-column:2; grid-row:4;">FOOD PANTRY INTERNSHIP</div>
+<div class="cell peach" style="grid-column:3; grid-row:4;">Grocery Shopping</div>
+
+<div class="cell blue" style="grid-column:4; grid-row:4 / span 3;">
+Community Trip & Lunch
+</div>
+
+<div class="cell yellow" style="grid-column:5; grid-row:4;">
+Life Skills Work Block
+</div>
+
+<div class="cell green" style="grid-column:6; grid-row:4 / span 1;">
+HOMEWOOD SUITES INTERNSHIP
+</div>
+
+<div class="cell green" style="grid-column:6; grid-row:5 / span 1;">
+</div>
+
+<div class="cell green" style="grid-column:6; grid-row:6 / span 1;">
+Lunch off campus
+</div>
+
+<!-- 11:00 -->
+<div class="cell time" style="grid-column:1; grid-row:5;">11:00 - 12:00</div>
+
+<div class="cell green" style="grid-column:2; grid-row:5;">
+Lunch off campus
+</div>
+
+<div class="cell peach" style="grid-column:3; grid-row:5;">
+Cooking & Lunch
+</div>
+
+<div class="cell pink" style="grid-column:5; grid-row:5;">
+Best Buddies Lunch
+</div>
+
+<!-- 12:00 -->
+<div class="cell time" style="grid-column:1; grid-row:6;">12:00 - 1:00</div>
+
+<div class="cell yellow" style="grid-column:2; grid-row:6;">
+Life Skills Work Block
+</div>
+
+<div class="cell yellow" style="grid-column:3; grid-row:6;">
+Home Living Work Block
+</div>
+
+<div class="cell yellow" style="grid-column:5; grid-row:6;">
+Job Skills Work Block
+</div>
+
+<div class="cell yellow" style="grid-column:6; grid-row:7;">
+IEP Goals
+</div>
+
+<!-- 11:00 -->
+<div class="cell time" style="grid-column:1; grid-row:7;">11:00 - 12:00</div>
+
+<div class="cell purple" style="grid-column:2; grid-row:7;">
+Peer Leisure
+</div>
+
+<div class="cell yellow" style="grid-column:3; grid-row:7;">
+IEP Goals
+</div>
+
+<div class="cell yellow" style="grid-column:4; grid-row:7;">
+IEP Goals
+</div>
+
+<div class="cell blue" style="grid-column:5; grid-row:7 / span 2;">
+Community Travel Training
+</div>
+
+<div class="cell yellow" style="grid-column:6; grid-row:7;">
+IEP Goals
+</div>
+
+<!-- 1:00 -->
+<div class="cell time" style="grid-column:1; grid-row:8;">1:00 - 2:00</div>
+
+<div class="cell yellow" style="grid-column:2; grid-row:8;">
+Office Skills
+</div>
+
+<div class="cell blue" style="grid-column:3; grid-row:8 / span 2;">
+Community Travel Training
+</div>
+
+<div class="cell purple" style="grid-column:4; grid-row:8;">
+Life Skills
+</div>
+
+<div class="cell purple" style="grid-column:6; grid-row:8;">
+Future Planning
+</div>
+
+<!-- 2:00 -->
+<div class="cell time" style="grid-column:1; grid-row:9;">2:00 - 3:00</div>
+
+<div class="cell yellow" style="grid-column:2; grid-row:9;">IEP Goals</div>
+<div class="cell pink" style="grid-column:4; grid-row:9;">Peer Leisure</div>
+<div class="cell yellow" style="grid-column:5; grid-row:9;">IEP Goals</div>
+<div class="cell pink" style="grid-column:6; grid-row:9;">Peer Leisure</div>
+
+</div>
+</div>
+
+</body>
+</html>
